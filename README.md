@@ -12,9 +12,9 @@
 *SCD Type 2 historical tracking*
 *Window-based aggregations for analytics*
 
-<Kafka → Bronze → Silver → Gold>
-              <↓>
-        <SCD Type 2 Dimension>
+* <Kafka → Bronze → Silver → Gold>
+              * <↓>
+        * <SCD Type 2 Dimension>
 
 ## Pipeline Breakdown
 
