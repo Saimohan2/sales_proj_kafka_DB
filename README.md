@@ -59,7 +59,7 @@
 - --> Time-based window aggregations
 - --> Business metrics (counts, totals, KPIs)
 - --> Stored as Delta tables optimized for querying and dashboards
-
+#
 ## Key Features
 
 - --> Structured Streaming with checkpointing
