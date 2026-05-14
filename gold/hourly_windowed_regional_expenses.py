@@ -25,7 +25,7 @@ try:
                 )
 
     query = (joined_df.writeStream.format("delta")
-            .option("checkpointLocation", "/Volumes/sales_project_streaming/gld/checkpoints_vol/hrly_reg_exp_chck/")
+            .option("checkpointLocation", "/Volumes/sales_project_streaming/gld/checkpoints_vol/hrly_chck_v2_exp_reg/")
             .outputMode("append")
             .trigger(availableNow = True)
             .table("sales_project_streaming.gld.hourly_regional_expenses_agg"))
