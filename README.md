@@ -1,6 +1,6 @@
 ## Real-Time Sales Data Pipeline
 
-## Overview:
+## Overview: 
 
 *This project implements an end-to-end real-time data pipeline using Kafka, PySpark Structured Streaming, and Delta Lake on Databricks.*
 
