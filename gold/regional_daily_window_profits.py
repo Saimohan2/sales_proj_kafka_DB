@@ -30,7 +30,7 @@ try:
                   .withColumn("window_start", F.col("window.start"))
                   .withColumn("window_end", F.col("window.end"))
                   .withColumn("date", F.to_date("window_start"))
-                  .withColumn("profit_margin", F.when(F.col("total_sales")!=0, F.round(F.col("profit")/F.col("total_sales"), 2)).otherwise(F.lit(0)))
+                  .withColumn("profit_margin", F.when(F.col("total_sales")!=0, F.round(100.0*F.col("profit")/F.col("total_sales"), 2)).otherwise(F.lit(0)))
                   .select("window_start", "window_end", "date", "region_id", "total_sales", "total_expenses", "profit", "profit_margin")
                   )
     
