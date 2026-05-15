@@ -35,7 +35,7 @@ try:
                 .withColumn("date", F.to_date("window_start"))
                 .withColumn("profit", F.col("total_sales") - F.col("total_expenses"))
                 .select("window_start", "window_end", "date", "hour", "region_id", "total_sales", "total_expenses",
-                        "profit", F.when(F.col("total_sales")!=0, F.round(F.col("profit")/F.col("total_sales"), 2)).otherwise(F.lit(0)).alias("profit_margin"))
+                        "profit", F.when(F.col("total_sales")!=0, F.round(100.0*F.col("profit")/F.col("total_sales"), 2)).otherwise(F.lit(0)).alias("profit_margin"))
                 )
     
     logger.info("Aggregation Done.... joining to regions now")
@@ -50,7 +50,7 @@ try:
     logger.info("Regions joined, cities fetched.... Writing to sink_________________")
 
     query = (combined_df.writeStream.format("delta")
-            .option("checkpointLocation", "/Volumes/sales_project_streaming/gld/checkpoints_vol/hrly_reg_prof_chck/")
+            .option("checkpointLocation", "/Volumes/sales_project_streaming/gld/checkpoints_vol/hrly_reg_prf_chck_v2/")
             .outputMode("append")
             .trigger(availableNow = True)
             .table("sales_project_streaming.gld.hourly_regional_profit_agg"))
